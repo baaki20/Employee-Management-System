@@ -2,9 +2,9 @@ module Employee.Management.System {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens ui to javafx.fxml;
+    opens main to javafx.fxml;
     opens model to javafx.base;
 
-    exports ui;
+    exports main;
     exports model;
 }
