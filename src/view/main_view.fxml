@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+    <?import javafx.scene.layout.*?>
+    <?import javafx.geometry.Insets?>
+
+    <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="ui.MainController">
+        <top>
+            <MenuBar>
+                <Menu text="Reports">
+                    <MenuItem fx:id="generateReportMenuItem" text="Generate Report" onAction="#onGenerateReportClicked"/>
+                    <MenuItem fx:id="topPerformersMenuItem" text="Top Performers" onAction="#onTopPerformersClicked"/>
+                    <MenuItem fx:id="topEarnersMenuItem" text="Top Earners" onAction="#onTopEarnersClicked"/>
+                </Menu>
+                <Menu text="Salary">
+                    <MenuItem fx:id="giveRaiseMenuItem" text="Give Raise" onAction="#onGiveRaiseClicked"/>
+                    <MenuItem fx:id="averageSalaryMenuItem" text="Average by Department" onAction="#onAverageSalaryClicked"/>
+                </Menu>
+            </MenuBar>
+        </top>
+
+        <left>
+            <VBox spacing="10" style="-fx-background-color: #f2f2f2;">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Label text="Search Employee"/>
+                <TextField fx:id="searchField" promptText="Search by Name"/>
+                <Button text="Search" onAction="#onSearchClicked" maxWidth="Infinity"/>
+
+
+                <Label text="Filter by Department"/>
+                <ComboBox fx:id="departmentComboBox" onAction="#onDepartmentSelected"/>
+
+                <Label text="Filter by Rating"/>
+                <TextField fx:id="minRatingField" promptText="Minimum Rating"/>
+
+                <Label text="Filter Salary Range"/>
+                <HBox spacing="5">
+                    <TextField fx:id="minSalaryField" promptText="Min"/>
+                    <TextField fx:id="maxSalaryField" promptText="Max"/>
+                </HBox>
+                <Button text="Apply Filters" onAction="#onFilterClicked" maxWidth="Infinity"/>
+                <Button text="Clear All" onAction="#onClearClicked" maxWidth="Infinity"/>
+                <TitledPane text="Add New Employee" expanded="false" >
+                    <padding>
+                        <Insets top="50" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <content>
+                        <GridPane hgap="10" vgap="10">
+                            <padding>
+                                <Insets top="20" right="10" bottom="10" left="10"/>
+                            </padding>
+                            <TextField fx:id="addNameField" promptText="Name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                            <TextField fx:id="addDeptField" promptText="Department" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                            <TextField fx:id="addSalaryField" promptText="Salary" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                            <TextField fx:id="addRatingField" promptText="Rating" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                            <TextField fx:id="addExpField" promptText="Experience" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                            <CheckBox fx:id="addIsActiveBox" text="Active" selected="true" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2">
+                                <Button text="Add" onAction="#onAddEmployeeClicked"/>
+                                <Button text="Update" onAction="#onUpdateEmployeeClicked"/>
+                                <Button text="Remove" onAction="#onRemoveEmployeeClicked"/>
+                            </HBox>
+                        </GridPane>
+                    </content>
+                </TitledPane>
+            </VBox>
+        </left>
+
+        <center>
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Label text="Employee Records" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <TableView fx:id="employeeTableView" prefHeight="600.0">
+                    <columns>
+                        <TableColumn fx:id="idColumn" text="ID"/>
+                        <TableColumn fx:id="nameColumn" text="Name"/>
+                        <TableColumn fx:id="departmentColumn" text="Department"/>
+                        <TableColumn fx:id="salaryColumn" text="Salary"/>
+                        <TableColumn fx:id="ratingColumn" text="Rating"/>
+                        <TableColumn fx:id="experienceColumn" text="Experience"/>
+                        <TableColumn fx:id="statusColumn" text="Active"/>
+                    </columns>
+                </TableView>
+
+            </VBox>
+        </center>
+    </BorderPane>
